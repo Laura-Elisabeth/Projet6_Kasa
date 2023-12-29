@@ -7,6 +7,7 @@ import Banner from '../../components/Banner';
 import Card from '../../components/Card';
 import { accomodationList } from '../../datas/accomodations';
 import Accomodation from '../Accomodations';
+import BannerPic from '../../assets/background-banner.png';
 
 const HomeWrapper = styled.div`
   display: flex; 
@@ -31,14 +32,18 @@ const CardContainer = styled.div`
 `
 
 function Home() {
+  const title='Chez vous, partout et ailleurs'
 
   return (
     <HomeWrapper>
 
-      <Banner/>
+      <Banner 
+        title={title}
+        photo={BannerPic}
+      />
       
       <CardContainer>
-        {accomodationList.map(({id, title, cover, pictures, description, rating, location, equipments, tags}, accomodationNumber) => (
+        {accomodationList.map(({id, title, cover}, accomodationNumber) => (
           <StyledLink 
           to={`/accomodation/${accomodationNumber}`}
           >

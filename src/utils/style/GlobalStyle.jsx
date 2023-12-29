@@ -10,6 +10,10 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.fa-star {
+    color: #FF6060;
+}
 `
 
 function GlobalStyle() {

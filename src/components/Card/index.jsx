@@ -5,9 +5,12 @@ import styled from 'styled-components'
 const CardTitle = styled.h2`
     color: white;
     font-family: Montserrat;
-    font-weight: normal;
-    font-size: 55%;
-    align-self: center;
+    font-weight: 500;
+    font-size: 70%;
+    align-self: left;
+    position: absolute; 
+    line-height: 430px;
+    margin-left: 1rem;
 `
 
 const CardImage = styled.img`
@@ -24,13 +27,13 @@ const CardWrapper = styled.div`
     justify-content: space-between;
     gap: 1em;
     padding: 13px;
-    background-color: #FF6060;
+    background: linear-gradient(180deg, rgba(255, 200, 200, 0) 0%, rgba(255, 96, 96, 1) 100%);
     border-radius: 10px;
     transition: 200ms;
     &:hover {
         cursor: pointer;
         box-shadow: 2px 2px 10px #e2e3e9;
-    }
+    };
 `
 
 function Card({title, picture}) {
