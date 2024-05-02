@@ -4,18 +4,13 @@ const BannerContainer = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
-    background-position: bottom;
     width: 100%;
-    height: 10rem;
+    height: 12rem;
     background-size: 100%;
-    background-repeat: no-repeat;
     border-radius: 25px;
-    background-color: rgba(246, 246, 246, 1);
-    mix-blend-mode: darken;
 
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
+    background-image: url(${props => props.value});
+    background-position: 50% 40%;
 `
 
 const BannerTitle = styled.h1`
@@ -23,26 +18,38 @@ const BannerTitle = styled.h1`
     color: white;
     font-family: Montserrat;
     font-size: 48px;
-    line-height: 68px;
+    line-height: 110px;
     letter-spacing: 0em;
     text-align: center;
+
+    @media only screen and (max-width: 767px) {
+        font-size: 20px
+    }
 `
 
-const BannerImage = styled.img`
-    pointer-events: none;
-    position: absolute;
+const BannerOverlay = styled.div`
+    display: flex;
+    justify-content: center;
+    align-item: center;
+    background-position: bottom;
     width: 100%;
-    height: 100%;
-    z-index: -1;
-    object-fit: cover;
+    height: 12rem;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.4);
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
+    };
 `
-
 
 function Banner({photo,title}) {
     return (
-        <BannerContainer>
-            <BannerImage src={photo} alt='Banner'/>
+        <BannerContainer value={photo}>
+            <BannerOverlay>
             <BannerTitle>{title}</BannerTitle>
+            </BannerOverlay>
         </BannerContainer>       
     )
 }

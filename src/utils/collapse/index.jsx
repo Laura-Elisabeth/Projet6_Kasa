@@ -5,7 +5,7 @@ import { accomodationList } from '../../datas/accomodations';
 
 const AboutBlock = styled.div`
     display: flex; 
-    margin: 0 1rem 0 1rem;
+    margin: 0 0rem 0 0rem;
     justify-content: center; 
 `
 
@@ -32,24 +32,33 @@ const AboutTitle = styled.li`
     padding: 0.75rem; 
     border-radius : 10px;
     font-size: 30px;
-    font-weight: 200;
+    font-weight: 400;
 `
 
 const AboutDescription = styled.div`
+    display: ${props => props.value ? 'flex' : 'none'};
     background-color: rgba(246, 246, 246, 1);
     color: rgba(255, 96, 96, 1);
     font-family: Montserrat;
     font-weight: 200;
-    font-size: 35px;
+    font-size: 28px;
     padding: 1rem; 
     border-radius : 10px;
 `
 
 const AboutButton = styled.button`
     border: none; 
-    background : none; 
+    background: none; 
     cursor: pointer; 
     color: white;
+    font-size: 25px; 
+`
+
+const Box = styled.div`
+    & > .fa-chevron-up {
+        transform:  ${props => props.value ? 'rotate(360deg)' : 'rotate(180deg)'};
+        transition: ${props => props.value ? 'transform 600ms ease-in-out' : ' transform 300ms ease-in-out'};
+        }
 `
 
 function Collapse({title, description}){
@@ -58,35 +67,26 @@ function Collapse({title, description}){
     return (
         <AboutBlock>
         <AboutList>
-        {isOpen ? (
             <AboutWrapper>
                 <AboutTitle>
                     {title}
                     <AboutButton
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {isOpen===false ? setIsOpen(true): setIsOpen(false)}}
                     >
-                    <i class="fa-solid fa-chevron-up"></i>
+                    <Box class="box" value={isOpen}>
+                        <i class="fa-solid fa-chevron-up"></i>
+                    </Box>
                     </AboutButton>
                 </AboutTitle>
-                <AboutDescription>
+                <AboutDescription
+                    value={isOpen} >
                     {description}
                 </AboutDescription>
             </AboutWrapper>
-        ) : (
-            <AboutWrapper>
-                <AboutTitle>
-                    {title}
-                    <AboutButton
-                    onClick={() => setIsOpen(true)}
-                    >
-                    <i class="fa-solid fa-chevron-down"></i>
-                    </AboutButton>
-                </AboutTitle>
-            </AboutWrapper>
-        )}
         </AboutList>
         </AboutBlock>
     )
 }
+
 
 export default Collapse

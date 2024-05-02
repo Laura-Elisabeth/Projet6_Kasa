@@ -1,20 +1,25 @@
 import { useParams } from 'react-router-dom';
 import { useContext } from "react"
 import styled from 'styled-components';
+import GlobalStyle from '../../utils/style/GlobalStyle';
 import { StyledLink } from '../../utils/style/Atoms'
 import { AccomodationContext } from '../../utils/context'
 import Banner from '../../components/Banner';
 import Card from '../../components/Card';
 import { accomodationList } from '../../datas/accomodations';
 import Accomodation from '../Accomodations';
-import BannerPic from '../../assets/background-banner.png';
+import BannerPic from '../../assets/BannerPic.png';
 
 const HomeWrapper = styled.div`
   display: flex; 
   justify-content: center;  
   flex-direction: column;
-  margin: 1rem;
   gap: 1.5rem;
+  margin: 3rem;
+
+  @media only screen and (max-width: 767px) {
+    margin: 1.5rem 2rem 2rem 2rem;
+  }
 `
 
 const CardContainer = styled.div`
@@ -26,9 +31,20 @@ const CardContainer = styled.div`
   grid-column-gap: 6px;
   grid-row-gap: 6px;
   gap: 2rem;
-  padding: 1rem; 
   border-radius: 25px;
   background-color: rgba(246, 246, 246, 1);
+
+  margin-top: 1rem;
+  padding: 1rem;
+
+  height: 1000px;
+  overflow: scroll;
+
+  @media only screen and (max-width: 767px) {
+    background-color: rgba(246, 246, 246, 0);
+    grid-template-columns: none;
+    padding: 0rem;
+  }
 `
 
 function Home() {
@@ -44,8 +60,7 @@ function Home() {
       
       <CardContainer>
         {accomodationList.map(({id, title, cover}, accomodationNumber) => (
-          <StyledLink 
-          to={`/accomodation/${accomodationNumber}`}
+          <StyledLink to={`/accomodation/${accomodationNumber}`}
           >
           <Card  
               key={id}

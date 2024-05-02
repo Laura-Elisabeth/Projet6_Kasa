@@ -8,8 +8,20 @@ const AboutSection = styled.div`
     display: flex; 
     justify-content: center;  
     flex-direction: column;
-    margin: 1rem;
     gap: 1.5rem;
+    margin: 1rem 2rem 2rem 2rem;
+`
+
+const AboutCollapse = styled.div`
+    display: flex; 
+    justify-content: center;  
+    flex-direction: column;
+    padding: 2rem 7rem 2rem 7rem;
+    gap: 1.5rem;
+
+    @media only screen and (max-width: 767px) {
+        padding: 0rem; 
+    }
 `
 
 function About() {
@@ -20,11 +32,13 @@ function About() {
             isHomeBanner={false}
             photo={BannerPic2}
             />
+            <AboutCollapse>
             {aboutInformations.map(({title, description}) => (
             <Collapse 
             title={title}
             description={description}/>
             ))}
+            </AboutCollapse>
         </AboutSection>
     )
 }

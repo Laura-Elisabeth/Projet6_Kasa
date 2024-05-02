@@ -4,14 +4,17 @@ import styled from 'styled-components';
 const Slide = styled.div`
     display: flex; 
     justify-content: center; 
-    margin: 2rem
+    margin: 2rem;
+    border-radius: 25px;
+    box-shadow: 2px -2px 2px rgba(0.1, 0.1, 0.1, 0.1);
 `
 
 const SlideImage = styled.img` 
     pointer-events: none;
-    height: 300px;
+    height: 420px;
     width: 100%;
     object-fit: cover;
+    border-radius: 25px;
 `
 
 const SlideNextButton = styled.button`
@@ -24,9 +27,13 @@ const SlideNextButton = styled.button`
     font-size: 48px;
     line-height: 300px;
     position: absolute;
-    bottom: 400px;
+    bottom: 360px;
     right: 40px;
     cursor: pointer;
+
+    @media only screen and (max-width: 767px) {
+        bottom: 420px;
+    }
 `
 
 const SlidePreviousButton = styled.button`
@@ -39,13 +46,19 @@ const SlidePreviousButton = styled.button`
     font-size: 48px;
     line-height: 300px;
     position: absolute;
-    bottom: 400px;
-    left: 55px;
+    bottom: 360px;
+    left: 45px;
     cursor: pointer;
+
+    @media only screen and (max-width: 767px) {
+        bottom: 420px;
+    }
 `
 
 function Slideshow({pictures}) {
     const [index, setIndex] = useState(0);
+    
+    console.log(pictures)
 
     const counter = pictures.reduce((n, picture) => {
         if (picture){
@@ -61,9 +74,24 @@ function Slideshow({pictures}) {
         console.log(pictures[index]);
     }, [index]);
 
+    if (counter === 1){
+        return (
+            <Slide>
+            <SlideImage
+                src={pictures[index]} 
+                alt=' '
+            /> 
+            </Slide> 
+        )
+    } else {
     return (
         index<1 ? (
             <Slide>
+            <SlidePreviousButton 
+                    onClick={() => setIndex(counter-1)}
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+            </SlidePreviousButton>
             <SlideImage
                 src={pictures[index]} 
                 alt=' '
@@ -101,10 +129,16 @@ function Slideshow({pictures}) {
                     src={pictures[index]} 
                     alt=' '
                 />
+                <SlideNextButton 
+                    onClick={() => setIndex(0)}
+                >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </SlideNextButton> 
             </Slide>
             )
         )
     ) 
+    }
 }
 
 export default Slideshow

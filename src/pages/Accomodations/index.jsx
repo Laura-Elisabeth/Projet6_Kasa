@@ -15,18 +15,27 @@ const AccomodationAdd = styled.div`
 const AccomodationBlock1 = styled.div`
     display: flex;
     justify-content: space-between; 
-    margin: 0rem 2rem 0rem 2rem;
+    margin: 0rem 2rem 1.5rem 2rem;
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;   
+    }
 `
 
 const AccomodationSubBlock1 = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+    @media only screen and (max-width: 767px) {
+        margin-bottom: 1rem;
+    }
 `
 
 const AccomodationTitle = styled.h2`
     font-family: Montserrat;
     color: #FF6060;
-    font-weight: 200;
+    font-weight: 500;
+    font-size: 40px;
+    margin: 0 0 0rem 0;
 `
 
 const AccomodationLocation = styled.div`
@@ -44,38 +53,54 @@ const AccomodationTagList = styled.div`
 `
 
 const AccomodationTag = styled.a`
+    font-size: 13px;
+    font-weight: 500;
     background-color: #FF6060;
-    border-radius: 10px;
-    padding: 8px;
-    margin: 1rem 0 1rem 0; 
+    border-radius: 15px;
+    padding: 8px 25px 8px 25px;
+    margin: 1rem 0 0rem 0; 
 ` 
 
 const AccomodationSubBlock2 = styled.div`
     display: flex;
     flex-direction: column;
+    position: right;
+    gap: 1rem;
+    height: 100%;
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: row-reverse;  
+        justify-content: space-between; 
+
+    }
 `
 
 const AccomodationHost = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
     color: #FF6060;
 `
 
-const HostName = styled.a`
+const HostName = styled.div`
+    display: flex;
+    flex-direction: column;
     font-family: Montserrat;
+    font-weight: 200;
+    margin: 0.75rem;
 `
 
 const HostImage = styled.img`
     border-radius: 100px;
-    width: 6rem; 
-    height: 6rem;
+    width: 5rem; 
+    height: 5rem;
 `
 
 const AccomodationRating = styled.div`
     display: flex;
+    flex-direction: row-reverse;
+    font-size: 30px;
+    height: fit-content;
 `
 
 const AccomodationBlock2 = styled.div`
@@ -84,14 +109,26 @@ const AccomodationBlock2 = styled.div`
     justify-content: space-between;
     gap: 0.5rem;
     margin: 0rem 1rem 0rem 1rem;
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;   
+    }
 `
 
 const Description = styled.div`
     width: 50%;
+
+    @media only screen and (max-width: 767px) {
+        width: 100%; 
+    }
 `
 
 const Equipments = styled.div`
     width: 50%;
+
+    @media only screen and (max-width: 767px) {
+        width: 100%; 
+    }
 `
 
 const EquipmentList = styled.ul`
@@ -101,6 +138,8 @@ const EquipmentList = styled.ul`
 function Accomodation() {
     const { accomodationNumber } = useParams();
     
+    console.log(accomodationNumber)
+
     const AccomodationIndex = Object.keys(accomodationList).reduce(function(total, cur, i) {
         total[i] = cur;
         return total;
@@ -109,12 +148,19 @@ function Accomodation() {
     console.log(AccomodationIndex)
     console.log(accomodationNumber)
                             
-    const LastAccomodation = Object.keys(accomodationList)[Object.keys(accomodationList).length - 1];
+    const LastAccomodation = accomodationList.length - 1;
     console.log(LastAccomodation);
 
-    const accomodation = accomodationNumber <= LastAccomodation && accomodationNumber >= 0 ? 
-        accomodationList.find((accomodation, i) => AccomodationIndex[i] === accomodationNumber) : 
-        null 
+    const accomodation = ((accomodationNumber <= LastAccomodation) && (accomodationNumber >= 0)) ? (accomodationList.find((accomodation, i) => AccomodationIndex[i] === accomodationNumber)) : null
+        
+    /* const biggerThan0 = accomodationNumber >= 0;
+    const smallerThanLast = accomodationNumber <= LastAccomodation;
+    const rightRange = biggerThan0 && smallerThanLast
+    const displayAccomodation = accomodationList.find((accomodation, i) => AccomodationIndex[i] === accomodationNumber);
+    const accomodation = rightRange ? displayAccomodation : null */
+
+    /* console.log(biggerThan0)
+    console.log(smallerThanLast) */
     console.log(accomodation)
 
     if (accomodation === null) {
@@ -124,7 +170,7 @@ function Accomodation() {
     } else {
         return (
             <AccomodationAdd>
-                <Slideshow
+                <Slideshow         
                     pictures={accomodation.pictures}
                 />
                 <AccomodationBlock1>    
@@ -138,7 +184,7 @@ function Accomodation() {
                         <AccomodationTagList>
                             {(accomodation.tags).map((tag) => (
                                 <AccomodationTag>
-                                    {tag } 
+                                    {tag} 
                                 </AccomodationTag>      
                             ))}
     
@@ -147,7 +193,8 @@ function Accomodation() {
                     <AccomodationSubBlock2>
                         <AccomodationHost>
                             <HostName>
-                                {accomodation.host.name}
+                                <div>{accomodation.host.name.split(' ')[0]}</div>
+                                <div>{accomodation.host.name.split(' ')[1]}</div>
                             </HostName>
                             <HostImage 
                                 src={accomodation.host.picture} alt=' ' 

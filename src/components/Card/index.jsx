@@ -5,42 +5,52 @@ import styled from 'styled-components'
 const CardTitle = styled.h2`
     color: white;
     font-family: Montserrat;
-    font-weight: 500;
-    font-size: 70%;
-    align-self: left;
-    position: absolute; 
-    line-height: 430px;
-    margin-left: 1rem;
-`
+    font-size: 15px;
+    text-align: left;
+    text-wrap: wrap;
+    margin: 1rem;
 
-const CardImage = styled.img`
-    height: 100%;
-    width: 100%;
-    align-self: center; 
-    border-radius: 10px;
-    aspect-ratio: 3/2;
+    &:hover { 
+        & > .title_space {
+            text-shadow: 1px 1px 2px pink, 0 0 1em grey, 0 0 0.2em pink;
+        }
+    }
+`
+const Div = styled.div`
+    display: flex;
+    flex-direction: column-reverse;
+  
+    @media only screen and (max-width: 767px) {
+        
+    }
 `
 
 const CardWrapper = styled.div`
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    gap: 1em;
-    padding: 13px;
     background: linear-gradient(180deg, rgba(255, 200, 200, 0) 0%, rgba(255, 96, 96, 1) 100%);
+    background-image: url(${props => props.value});
+    background-size: cover;
     border-radius: 10px;
-    transition: 200ms;
-    &:hover {
-        cursor: pointer;
-        box-shadow: 2px 2px 10px #e2e3e9;
-    };
+    aspect-ratio: 1/1;
+    background-color: rgba(255, 96, 96, 1);
+
+    @media only screen and (max-width: 767px) {
+        aspect-ratio: 4/3;
+        padding: 1rem;
+    }
 `
 
 function Card({title, picture}) {
     return (
-        <CardWrapper>
-            <CardImage src={picture} alt="accomodation" />
-            <CardTitle>{title}</CardTitle>
+        <CardWrapper value={picture}>
+            <Div>
+            <CardTitle>
+                <div class="title_space">
+                    {title}
+                </div>
+            </CardTitle>
+            </Div>
         </CardWrapper>
     )
 }
