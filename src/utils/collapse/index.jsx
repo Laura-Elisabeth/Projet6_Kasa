@@ -36,7 +36,8 @@ const AboutTitle = styled.li`
 `
 
 const AboutDescription = styled.div`
-    opacity: ${props => props.value ? '0' : '1'};
+    height: ${props => props.value ? '100%' : '0px'};
+    opacity: ${props => props.value ? '1' : '0'};
     background-color: rgba(246, 246, 246, 1);
     color: rgba(255, 96, 96, 1);
     font-family: Montserrat;
@@ -46,7 +47,7 @@ const AboutDescription = styled.div`
     border-radius: 10px;
 
     transform-origin: 100% 0%;
-    transform: ${props => props.value ? 'scaleY(0)' : 'scaleY(1)'};
+    transform: ${props => props.value ? 'scaleY(1)' : 'scaleY(0)'};
     transition: transform 600ms; 
 `
 
@@ -60,7 +61,7 @@ const AboutButton = styled.button`
 
 const Box = styled.div`
     & > .fa-chevron-up {
-        transform:  ${props => props.value ? 'rotate(360deg)' : 'rotate(180deg)'};
+        transform:  ${props => props.value ? 'rotate(180deg)' : 'rotate(360deg)'};
         transition: ${props => props.value ? 'transform 600ms ease-in-out' : ' transform 300ms ease-in-out'};
         }
 `

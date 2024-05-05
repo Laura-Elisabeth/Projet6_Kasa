@@ -13,6 +13,7 @@ const CardTitle = styled.h2`
     &:hover { 
         & > .title_space {
             text-shadow: 1px 1px 2px pink, 0 0 1em grey, 0 0 0.2em pink;
+            font-size: 17px;
         }
     }
 `
