@@ -36,14 +36,18 @@ const AboutTitle = styled.li`
 `
 
 const AboutDescription = styled.div`
-    display: ${props => props.value ? 'flex' : 'none'};
+    opacity: ${props => props.value ? '0' : '1'};
     background-color: rgba(246, 246, 246, 1);
     color: rgba(255, 96, 96, 1);
     font-family: Montserrat;
     font-weight: 200;
     font-size: 28px;
     padding: 1rem; 
-    border-radius : 10px;
+    border-radius: 10px;
+
+    transform-origin: 100% 0%;
+    transform: ${props => props.value ? 'scaleY(0)' : 'scaleY(1)'};
+    transition: transform 600ms; 
 `
 
 const AboutButton = styled.button`
@@ -80,8 +84,8 @@ function Collapse({title, description}){
                 </AboutTitle>
                 <AboutDescription
                     value={isOpen} >
-                    {description}
-                </AboutDescription>
+                        {description}
+                </AboutDescription>   
             </AboutWrapper>
         </AboutList>
         </AboutBlock>

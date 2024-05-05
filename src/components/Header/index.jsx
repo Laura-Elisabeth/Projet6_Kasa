@@ -41,13 +41,43 @@ const NavOptions = styled.div`
     justify-content: space-between;
     align-items: center;
     font-family: Montserrat;
-    &:hover {
-        text-decoration: underline #FF6060;
-    };
+
+    & > a:hover, a:focus, a:active {
+        color: #FF6060;
+        text-decoration: none;
+    }
     & > a {
-        font-size: 24px;
-        font-weight: 500;
-        margin-left: 2rem;
+        text-decoration: none;
+        transition: color 0.1s, background-color 0.1s;
+    }
+    & > a {
+        position: relative;
+        display: block;
+        padding: 16px 0;
+        margin: 0 12px;
+        line-height: 8px;
+        transition: color 0.1s,background-color 0.1s,padding 0.2s ease-in;
+        color: #FF6060;
+    }
+    & > a::before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: #FF6060;
+        transform-origin: right top;
+        transform: scale(0, 1);
+        transition: color 0.1s,transform 0.2s ease-out;
+    }
+    & > a:active::before {
+        background-color: #FF6060;
+    }
+    & > a:hover::before, a:focus::before {
+        transform-origin: left top;
+        transform: scale(1, 1);
     }
 
     @media only screen and (max-width: 767px) {
@@ -59,7 +89,6 @@ const NavOptions = styled.div`
 `
 
 export function Header() {
-    const [isActive, setIsActive] = useState(false);
 
     return (
         <HeaderContainer>
@@ -69,12 +98,12 @@ export function Header() {
             <NavContainer>
                 <NavOptions>
                     <StyledLink to='/' $isFullLink>
-                        Accueil
+                            Accueil
                     </StyledLink>
                 </NavOptions>
                 <NavOptions>
                     <StyledLink to='/about' $isFullLink>
-                        À Propos
+                            À Propos
                     </StyledLink>
                 </NavOptions>
             </NavContainer>
