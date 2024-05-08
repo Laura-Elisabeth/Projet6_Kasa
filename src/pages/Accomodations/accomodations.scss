@@ -1,0 +1,128 @@
+.accomodation-add {
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.accomodation-block-1 {
+    display: flex;
+    justify-content: space-between; 
+    margin: 0rem 2rem 1.5rem 2rem;
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;   
+    }
+}
+
+.accomodation-block-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0rem 1rem 0rem 1rem;
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: column;   
+    }
+}
+
+.accomodation-sub-block-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    @media only screen and (max-width: 767px) {
+        margin-bottom: 1rem;
+    }
+}
+
+.accomodation-title {
+    font-family: Montserrat;
+    color: #FF6060;
+    font-weight: 500;
+    font-size: 40px;
+    margin: 0 0 0rem 0;
+}
+
+.accomodation-location {
+    font-family: Montserrat;
+    color: #FF6060;
+    font-weight: 200;
+}
+
+.accomodation-tag-list {
+    display: flex;
+    font-family: "Montserrat";
+    color: white;
+    font-weight: 200;
+    gap: 1rem; 
+}
+
+.accomodation-tag {
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #FF6060;
+    border-radius: 15px;
+    padding: 8px 25px 8px 25px;
+    margin: 1rem 0 0rem 0; 
+}
+
+.accomodation-sub-block-2 {
+    display: flex;
+    flex-direction: column;
+    position: right;
+    gap: 1rem;
+    height: 100%;
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: row-reverse;  
+        justify-content: space-between; 
+
+    }
+}
+
+.accomodation-host {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #FF6060;
+}
+
+.host-name {
+    display: flex;
+    flex-direction: column;
+    font-family: Montserrat;
+    font-weight: 200;
+    margin: 0.75rem;
+}
+
+.host-image {
+    border-radius: 100px;
+    width: 5rem; 
+    height: 5rem;
+}
+
+.accomodation-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 30px;
+    height: fit-content;
+}
+
+.description {
+    width: 50%;
+
+    @media only screen and (max-width: 767px) {
+        width: 100%; 
+    }
+}
+
+.equipments {
+    width: 50%;
+
+    @media only screen and (max-width: 767px) {
+        width: 100%; 
+    }
+}
+
+.equipment-list {
+    list-style: none;
+}

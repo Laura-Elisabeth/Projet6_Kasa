@@ -1,0 +1,45 @@
+@charset "UTF-8";
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20rem;
+  background-position: 50% 40%;
+  background-color: linear-gradient(180deg, rgba(255, 200, 200, 0) 0%, rgb(255, 96, 96) 100%);
+  background-size: cover;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .card-wrapper {
+    aspect-ratio: 4/3;
+    padding: 1rem;
+  }
+}
+.card-wrapper > img {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.card-wrapper > .sub-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.card-wrapper > .card-title {
+  color: white;
+  font-family: "Montserrat";
+  font-size: 15px;
+  text-align: left;
+  text-wrap: wrap;
+  margin: 1rem;
+}
+  .card-wrapper > .card-title:hover > .title_space {
+  text-shadow: 1px 1px 2px pink, 0 0 1em grey, 0 0 0.2em pink;
+  font-size: 17px;
+}/*# sourceMappingURL=card.css.map */

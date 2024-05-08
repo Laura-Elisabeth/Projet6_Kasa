@@ -1,9 +1,9 @@
-.fa-star {
-    font-size: 20px;
-}
-
 .rating {
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
+
+    & > .fa-star {
+        font-size: 20px;
+    }
 }

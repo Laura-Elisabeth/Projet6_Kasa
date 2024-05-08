@@ -1,0 +1,19 @@
+.about-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1rem 2rem 2rem 2rem;
+}
+.about-section > .about-collapse {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 7rem 2rem 7rem;
+  gap: 1.5rem;
+}
+@media only screen and (max-width: 767px) {
+  .about-section > .about-collapse {
+    padding: 0rem;
+  }
+}/*# sourceMappingURL=about.css.map */

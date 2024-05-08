@@ -1,0 +1,28 @@
+.error-wrapper {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-wrapper > .error-title {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 180px;
+  color: rgb(255, 96, 96);
+  margin: 0;
+}
+.error-wrapper > .error-subtitle {
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 300;
+  color: rgb(255, 96, 96);
+  margin: 0;
+}
+.error-wrapper > .back-home > h3 {
+  font-family: "Montserrat";
+  font-size: 13px;
+  font-weight: 200;
+  color: rgb(255, 96, 96);
+  text-decoration: underline;
+  margin-top: 6rem;
+}/*# sourceMappingURL=error.css.map */

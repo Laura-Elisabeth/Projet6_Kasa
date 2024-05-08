@@ -1,0 +1,76 @@
+$primary-color: #FF6060;
+
+.header-container {
+    display: flex; 
+    justify-content: space-between;
+    margin: 3rem 3rem 0rem 3rem;
+
+    @media only screen and (max-width: 767px) {
+        margin: 1rem 2rem 0rem 2rem;
+    }
+
+    & > .home-logo-container {
+        display: flex; 
+    }
+
+    & > .nav-container {
+        display: flex; 
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;   
+
+        & > .nav-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat';
+        
+            & > a:hover, a:focus, a:active {
+                color: $primary-color;
+                text-decoration: none;
+            }
+            & > a {
+                text-decoration: none;
+                transition: color 0.1s, background-color 0.1s;
+            }
+            & > a {
+                position: relative;
+                display: block;
+                padding: 16px 0;
+                margin: 0 12px;
+                line-height: 8px;
+                transition: color 0.1s,background-color 0.1s,padding 0.2s ease-in;
+                color: $primary-color;
+            }
+            & > a::before {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                height: 2px;
+                width: 100%;
+                background-color: $primary-color;
+                transform-origin: right top;
+                transform: scale(0, 1);
+                transition: color 0.1s, transform 0.2s ease-out;
+            }
+            & > a:active::before {
+                background-color: $primary-color;
+            }
+            & > a:hover::before, a:focus::before {
+                transform-origin: left top;
+                transform: scale(1, 1);
+            }
+        
+            @media only screen and (max-width: 767px) {
+                & > a {
+                    flex-direction: column;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+

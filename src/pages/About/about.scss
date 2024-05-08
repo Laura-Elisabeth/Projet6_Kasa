@@ -1,0 +1,22 @@
+$about-gap: 1.5rem;
+
+.about-section {
+    display: flex; 
+    justify-content: center;  
+    flex-direction: column;
+    gap: $about-gap;
+    margin: 1rem 2rem 2rem 2rem;
+
+    & > .about-collapse {
+        display: flex; 
+        justify-content: center;  
+        flex-direction: column;
+        padding: 2rem 7rem 2rem 7rem;
+        gap: $about-gap;
+    
+        @media only screen and (max-width: 767px) {
+            padding: 0rem; 
+        }
+    }
+}
+

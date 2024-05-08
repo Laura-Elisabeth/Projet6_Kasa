@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Accomodation from './pages/Accomodations';
-import Error from './pages/Error';
-import { Header } from './components/Header';
-import Footer from './components/Footer';
+import Home from './pages/Home/home';
+import About from './pages/About/about';
+import Accomodation from './pages/Accomodations/accomodations';
+import Error from './pages/Error/error';
+import {Header} from './components/Header/header';
+import Footer from './components/Footer/footer';
 import GlobalStyle from './utils/style/GlobalStyle';
 import { AccomodationProvider } from './utils/context';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <Router>
       <AccomodationProvider>
@@ -25,6 +29,5 @@ ReactDOM.render(
       <Footer />
       </AccomodationProvider>
     </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )

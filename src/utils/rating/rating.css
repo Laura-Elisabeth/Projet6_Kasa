@@ -1,0 +1,8 @@
+.rating {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.rating > .fa-star {
+  font-size: 20px;
+}/*# sourceMappingURL=rating.css.map */
